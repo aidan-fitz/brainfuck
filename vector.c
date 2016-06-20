@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <unistd.h>
 
 #include "vector.h"
 
@@ -32,4 +33,12 @@ void ptr_left(struct vector *vec) {
   if (vec->i < 0) {
     vec->i += vec->size;
   }
+}
+
+void io_read(struct vector *vec) {
+  read(STDIN_FILENO, vec->data + vec->i, 1);
+}
+
+void io_write(struct vector *vec) {
+  write(STDOUT_FILENO, vec->data + vec->i, 1);
 }
